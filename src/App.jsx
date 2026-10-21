@@ -1,11 +1,14 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from 'react';
+import AppHeader from './components/AppHeader';
+import IntroSection from './components/IntroSection';
+import './App.module.css';
 
 function App() {
   return (
-    <main>
-      <h1>RosterReady</h1>
-    </main>
+    <>
+      <AppHeader/>
+      <IntroSection/>
+    </>
   )
 }
 

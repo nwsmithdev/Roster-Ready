@@ -1,0 +1,52 @@
+.header {
+    background-color: var(--cards);
+    border-bottom: 1px solid var(--border);
+}
+
+.headerContent {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 72px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brandName {
+    color: var(--primary-text);
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.logo {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: var(--primary-action);
+    font-weight: 700;
+}
+
+.helpButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    color: #ffffff;
+    background-color: var(--primary-action);
+}
