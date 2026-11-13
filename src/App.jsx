@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import AppHeader from './components/AppHeader';
 import IntroSection from './components/IntroSection';
+import FileUpload from './components/FileUpload';
 import './App.module.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <>
       <AppHeader/>
       <IntroSection/>
+      <FileUpload/>
     </>
   )
 }
