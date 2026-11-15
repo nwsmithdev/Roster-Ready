@@ -1,0 +1,68 @@
+.fileUploadSection {
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0 2rem 1rem 2rem;
+    text-align: center;
+}
+
+.uploadTitle {
+    font-size: 1.5rem;
+    color: var(--primary);
+    text-align: center;
+}
+
+.dropZone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background-color: var(--bg);
+    padding: 2rem 1.5rem;
+    border: 2px dashed var(--border);
+    border-radius: 0.75rem;
+    min-height: 14rem;
+}
+
+.dropZone:focus-within .browseLabel {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+.browseLabel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-action);
+    color: var(--surface);
+    font-weight: 700;
+    border-radius: 0.5rem;
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.browseLabel:hover {
+    background-color: var(--primary-hover);
+}
+
+/* hidden to use browseLabel instead */
+.fileInput {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.fileReq {
+    font-size: 0.85rem;
+    color: var(--secondary);
+    margin: 0;
+}
