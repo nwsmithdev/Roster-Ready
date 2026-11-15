@@ -1,5 +1,5 @@
 .header {
-    background-color: var(--cards);
+    background-color: var(--surface);
     border-bottom: 1px solid var(--border);
 }
 
@@ -8,7 +8,7 @@
     max-width: 1200px;
     min-height: 72px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 1.5em;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -22,7 +22,7 @@
 }
 
 .brandName {
-    color: var(--primary-text);
+    color: var(--primary);
     font-size: 1.125rem;
     font-weight: 700;
 }
@@ -33,8 +33,8 @@
     width: 36px;
     height: 36px;
     border-radius: 10px;
-    color: #ffffff;
-    background-color: var(--primary-action);
+    color: var(--surface);
+    background-color: var(--primary);
     font-weight: 700;
 }
 
@@ -43,10 +43,30 @@
     justify-content: center;
     align-items: center;
     height: 36px;
-    padding: 15px 30px;
+    padding: 1em 2em;
     font-size: 1rem;
     font-weight: 700;
+    border: 1px solid var(--border);
     border-radius: 10px;
-    color: #ffffff;
-    background-color: var(--primary-action);
+    color: var(--primary);
+    background-color: var(--surface);
+}
+
+.helpButton:hover {
+    background-color: var(--bg);
+}
+
+/* Tablet & Desktop Media Queries */
+@media screen and (600px <= width <= 1024px) {
+    .headerContent {
+        padding: 1.125em 1.5em;
+    }
+
+    .header {
+        border-bottom: 2px solid var(--border);
+    }
+
+    .brandName {
+        font-size: 1.25rem;
+    }
 }

@@ -2,9 +2,12 @@
   --primary: #0F172A;
   --secondary: #475569;
   --bg: #F8FAFC;
-  --border: #CBD5E1;
-  --cards: #FFFFFF;
+  --border: #94A3B8;
+  --surface: #FFFFFF;
   --accent: #0D9488;
+  --accent-text: #115E59;
+  --accent-light: #F0FDFA;
+  --accent-border: #99F6E4;
   --primary-action: #2563EB;
   --primary-hover: #1D4ED8;
   --validation-success: #15803D;
@@ -13,9 +16,6 @@
   --validation-warning-light: #FEF3C7;
   --validation-error: #B91C1C;
   --validation-error-light: #FEE2E2;
-  --validation-info: #1D4ED8;
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
 }
 
 *,
