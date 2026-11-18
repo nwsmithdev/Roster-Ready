@@ -30,6 +30,12 @@
     outline-offset: 3px;
 }
 
+.uploadDrop,
+.fileSeparator,
+.browseLabel {
+    margin: .5rem 0;
+}
+
 .browseLabel {
     display: inline-flex;
     align-items: center;
@@ -65,4 +71,34 @@
     font-size: 0.85rem;
     color: var(--secondary);
     margin: 0;
+}
+
+.selectedFile {
+    font-weight: bold;
+}
+
+/* Tablet Media Query */
+@media screen and (min-width: 37.5rem) {
+    .dropZone {
+        max-width: 60ch;
+        margin: 0 auto;
+        padding: 1.75rem 1rem;
+    }
+
+    .uploadTitle {
+        font-size: 1.75rem;
+    }
+}
+
+/* Desktop Media Query */
+@media screen and (min-width: 64rem) {
+    .dropZone {
+        max-width: 70ch;
+        margin: 0 auto;
+        padding: 1.5rem 0.75rem;
+    }
+
+    .uploadTitle {
+        font-size: 2rem;
+    }
 }
