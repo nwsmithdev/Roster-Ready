@@ -2,15 +2,16 @@ import { useState } from 'react';
 import AppHeader from './components/AppHeader';
 import IntroSection from './components/IntroSection';
 import FileUpload from './components/FileUpload';
-import './App.module.css';
+import styles from './App.module.css';
+import Papa from 'papaparse';
 
 function App() {
 
   const [ selectedFile, setSelectedFile ] = useState(null);
   const [ fileError, setFileError ] = useState("");
+  const [ parsedRows, setParsedRows ] = useState([]);
 
   const handleFileSelect = (file) => {
-    console.log(file)
     if (!file) return;
     if (!file.name.toLowerCase().endsWith(".csv")) {
       setSelectedFile(null);
@@ -19,10 +20,25 @@ function App() {
     }
     setFileError("");
     setSelectedFile(file);
+    setParsedRows([]);
   }
 
   const handleFileRemove = () => {
     setSelectedFile(null);
+    setParsedRows([]);
+  }
+
+  const handleValidate = () => {
+    if (!selectedFile) return;
+
+    Papa.parse(selectedFile, {
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        console.log(results);
+        setParsedRows(results.data);
+      },
+    });
   }
 
   return (
@@ -34,7 +50,13 @@ function App() {
         onFileSelect={handleFileSelect}
         onFileRemove={handleFileRemove}
         fileError={fileError}
+        onValidate={handleValidate}
       />
+      {parsedRows.length > 0 && (
+        <p role="status" className={styles.tempStatus}>
+          {parsedRows.length} records parsed successfully
+        </p>
+      )}
     </>
   )
 }

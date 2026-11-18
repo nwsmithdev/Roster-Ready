@@ -1,6 +1,6 @@
 import styles from './FileUpload.module.css';
 
-function FileUpload({ selectedFile, onFileSelect, onFileRemove, fileError }) {
+function FileUpload({ selectedFile, onFileSelect, onFileRemove, fileError, onValidate }) {
 
     function handleFileChange(e) {
         const file = e.target.files[0];
@@ -20,18 +20,31 @@ function FileUpload({ selectedFile, onFileSelect, onFileRemove, fileError }) {
                 <input className={styles.fileInput} id="roster-file" type="file" accept=".csv,text/csv" onChange={handleFileChange}/>
                 <p className={styles.fileReq}>CSV only - One file at a time</p>
             </div>
+
+            {/* conditionally adds the filename once a file has been uploaded */} 
             {selectedFile && (
                 <p>
-                    Selected file: <strong>{selectedFile.name}</strong>
+                    Selected File: <strong>{selectedFile.name}</strong>
                 </p>
             )}
+
+            {/* conditionally adds a validate button for the uploaded file */}
+            {selectedFile && (
+                <button type="button" onClick={onValidate}>
+                    Validate Roster
+                </button>
+            )}
+
+            {/* conditonally adds error statements if there are errors during the upload process */}
             {fileError && (
                 <p className={styles.fileError} role="alert">
                     {fileError}
                 </p>
             )}
+
+            {/* if a file has been uploaded, gives a user the option to remove it */}
             <button type="button" onClick={onFileRemove}>
-                Remove file
+                Remove File
             </button>
         </section>
     );
