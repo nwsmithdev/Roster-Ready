@@ -3,6 +3,8 @@ import AppHeader from './components/AppHeader';
 import IntroSection from './components/IntroSection';
 import FileUpload from './components/FileUpload';
 import styles from './App.module.css';
+import { findMissingColumns } from './utils/validationRules.js';
+import ValidationFeedback from './components/ValidationFeedback.jsx';
 import Papa from 'papaparse';
 
 function App() {
@@ -10,21 +12,27 @@ function App() {
   const [ selectedFile, setSelectedFile ] = useState(null);
   const [ fileError, setFileError ] = useState("");
   const [ parsedRows, setParsedRows ] = useState([]);
+  const [ missingColumns, setMissingColumns ] = useState([]);
+  const [ hasValidated, setHasValidated ] = useState(false);
 
   const handleFileSelect = (file) => {
     if (!file) return;
     if (!file.name.toLowerCase().endsWith(".csv")) {
-      setSelectedFile(null);
       setFileError("Please select a CSV file.");
       return;
     }
     setFileError("");
     setSelectedFile(file);
+    setHasValidated(false);
+    setMissingColumns([]);
     setParsedRows([]);
   }
 
   const handleFileRemove = () => {
     setSelectedFile(null);
+    setFileError("");
+    setHasValidated(false);
+    setMissingColumns([]);
     setParsedRows([]);
   }
 
@@ -37,6 +45,10 @@ function App() {
       complete: (results) => {
         console.log(results);
         setParsedRows(results.data);
+        const missing = findMissingColumns(results.meta.fields ?? []);
+        setMissingColumns(missing);
+        setHasValidated(true);
+        console.log(missing);
       },
     });
   }
@@ -52,10 +64,11 @@ function App() {
         fileError={fileError}
         onValidate={handleValidate}
       />
-      {parsedRows.length > 0 && (
-        <p role="status" className={styles.tempStatus}>
-          {parsedRows.length} records parsed successfully
-        </p>
+      {hasValidated && (
+        <ValidationFeedback
+          missingColumns={missingColumns}
+          recordCount={parsedRows.length}
+        />
       )}
     </>
   )
